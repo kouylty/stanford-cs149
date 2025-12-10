@@ -52,6 +52,6 @@ CUDA 是一种类 C 的语言，主要用于大规模并行计算领域，统一
 
 最后测试结果如下。
 
-<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/asst3/render/cudaout_0000.png" style="zoom:33%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst3/render/cudaout_0000.png" style="zoom:33%;" />
 
-<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/asst3/render/score.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst3/render/score.png" style="zoom:50%;" />
