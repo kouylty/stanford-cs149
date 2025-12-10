@@ -1,0 +1,30 @@
+Rendering to 1024x1024 image
+Loaded scene with 10000 circles
+---------------------------------------------------------
+Initializing CUDA for CudaRenderer
+Found 1 CUDA devices
+Device 0: NVIDIA GeForce RTX 5070 Ti
+   SMs:        70
+   Global mem: 16303 MB
+   CUDA Cap:   12.0
+---------------------------------------------------------
+WARNING: You're not running on a fast GPU, please consider using NVIDIA GTX 480, 670 or 780.
+---------------------------------------------------------
+
+Running benchmark, 4 frames, beginning at frame 0 ...
+Dumping frames to logs/output_xxx.ppm
+Copying image data from device
+Wrote image file logs/output_0000.ppm
+Copying image data from device
+Wrote image file logs/output_0001.ppm
+Copying image data from device
+Wrote image file logs/output_0002.ppm
+Copying image data from device
+Wrote image file logs/output_0003.ppm
+Clear:    0.4601 ms
+Advance:  0.0018 ms
+Render:   0.8255 ms
+Total:    1.2874 ms
+File IO:  106.9567 ms
+
+Overall:  0.4330 sec (note units are seconds)
