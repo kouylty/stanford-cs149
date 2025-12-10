@@ -38,7 +38,7 @@ for(int ib=0;ib<N;ib+=b)
 
 另外，我们还发现对于每一组 $b,h$，内部的 attention 计算都是完全独立的，因此可以为每一组 $b,h$ 创建一个线程来并行计算。这样可以把效率提升大约 $1.5$ 倍。
 
-<img src="https://raw.githubusercontent.com/kouylty/cs149gpt/assets/test2_ref.png" style="zoom:50%;" /> <img src="https://raw.githubusercontent.com/kouylty/cs149gpt/assets/test2_stu.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/cs149gpt/assets/test2_ref.png" style="zoom:50%;" /> <img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/cs149gpt/assets/test2_stu.png" style="zoom:50%;" />
 
 
 
@@ -62,6 +62,6 @@ for(int ib=0;ib<N;ib+=b)
 
 测试时我们发现，Part 4 的用时其实是更长的，但是内存使用大大减少，这是因为中间使用的张量大小都是 tile 级别的。
 
-<img src="https://raw.githubusercontent.com/kouylty/cs149gpt/assets/test2_ref.png" style="zoom:50%;" /> 
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/cs149gpt/assets/test2_ref.png" style="zoom:50%;" /> 
 
 其实我们的 Part 4 还能进一步优化，比如并行化 $B,H$ 维度，内部做更加细粒的递推处理，减少迭代次数。
