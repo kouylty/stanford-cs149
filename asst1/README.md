@@ -18,7 +18,7 @@ kouylty
 
 下图是线程数与加速效率之间的关系图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog1_mandelbrot_threads/line_graph.png" style="zoom:20%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog1_mandelbrot_threads/line_graph.png" style="zoom:20%;" />
 
 我们发现，当线程数量为 $3$ 时，加速效率有下降。这是因为复数域中每个点的迭代次数不同， ```thread 1``` 计算的图像中间部分耗时多，出现了短板效应。
 
@@ -38,9 +38,9 @@ kouylty
 
 对于 ```VECTOR_WIDTH``` 为 $2,4,8,16$ 的情况，分别用 ```./myexp -s 10000``` 进行测试，结果如下。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test2.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test4.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test2.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test4.png" style="zoom:50%;" />
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test8.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test16.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test8.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog2_vecintrin/test16.png" style="zoom:50%;" />
 
 我们发现 vector utilization 是很高的，说明我们很好的利用了 SIMD 的性质。另外，total vector instructions 与 vector width 大致成反比，符合预期。
 
@@ -60,7 +60,7 @@ kouylty
 
 第二部分，ISPC launch 了若干任务。当有两个任务时，加速约 $9.80\mathrm{x}$。当任务数量为 $8$ 时，加速效果最好，如下图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog3_mandelbrot_ispc/test2.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog3_mandelbrot_ispc/test8.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog3_mandelbrot_ispc/test2.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog3_mandelbrot_ispc/test8.png" style="zoom:50%;" />
 
 
 
@@ -70,13 +70,13 @@ kouylty
 
 一般情况下，加速效率的测试结果如下图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test1.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test1.png" style="zoom:50%;" />
 
 可见，SIMD 带来的加速效果约为 $4\mathrm{x}$，multicore/tasks 带来的加速效果也约为 $4\mathrm{x}$。理论上，后者带来的加速效果应该接近 $8\mathrm{x}$，效果减半应该与本人虚拟机的硬件设置有关。
 
 想要获得最大的加速效果，就是要最大化向量利用率（vector utilization）。可以将所有数设置成相同的值（如 ```2.9999f```），这样向量利用率可以接近 $100\%$。相反，想要获得最差的加速效果，就要尽可能降低向量利用率，可以每八个数中有一个是 ```2.9999f```，其余全是 ```1.f```。两种情况的测试效果如下图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test2.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test3.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test2.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog4_sqrt/test3.png" style="zoom:50%;" />
 
 特别的，我们发现在最差情况下 SIMD 的加速效果小于 $1$，推测是因为在向量利用率降低至 $10\%$ 左右时，SIMD 硬件调度的消耗已经不能忽略。
 
@@ -100,10 +100,10 @@ kouylty
 
 首先，根据 ```main.cpp``` 中的注释，在本地生成数据集 ```data.dat```。根据要求，我们只能修改 ```computeAssignments```，```computeCentroids```，```computeCost``` 三个函数中的一个，因此我们要先对三个函数的耗时进行分析，结果如下图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test1.1.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test1.2.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test1.1.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test1.2.png" style="zoom:50%;" />
 
 我们发现，函数 ```computeAssignments``` 用时最长，考虑对这个函数进行并行化。这个函数实现的功能是，对每一个点，分配给距离它最近的中心（centroid）。由此可见，每个点是独立的、可并行化的（parallelizeable）。因此，将 $M$ 个点等分成 $8$ 份，分配给 $8$ 个线程进行独立计算。优化后的运行结果如下图。
 
-<img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test2.1.png" style="zoom:50%;" /><img src="raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test2.2.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test2.1.png" style="zoom:50%;" /><img src="https://raw.githubusercontent.com/kouylty/stanford-cs149/main/asst1/prog6_kmeans/test2.2.png" style="zoom:50%;" />
 
 总加速效果约为 $1.82\mathrm{x}$。
